@@ -2,8 +2,6 @@
 
 # https://leetcode.com/problems/valid-palindrome/
 
-require 'pry-nav'
-
 def is_palindrome(s)
   parsed = s.downcase.gsub(/[^a-z|0-9]/, '')
   i = 0

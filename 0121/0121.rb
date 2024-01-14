@@ -2,8 +2,6 @@
 
 # https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
-require 'pry-nav'
-
 def max_profit(p)
   min = Float::INFINITY
   profit = -Float::INFINITY
