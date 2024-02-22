@@ -30,6 +30,8 @@ boilerplate = <<~STUFF
 
   # LINK GOES HERE
 
+  require 'pry-nav'
+
 STUFF
 
 created.puts boilerplate
