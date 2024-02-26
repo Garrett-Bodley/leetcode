@@ -14,7 +14,7 @@ def find_judge(n, trust)
     trusted_by[trusts] += 1
     does_trust[person] = true
   end
-  potential_judge = trusted_by.to_a.find do |person, trustcount|
+  potential_judge = trusted_by.to_a.find do |_person, trustcount|
     trustcount == n - 1
   end
   return -1 if potential_judge.nil?
