@@ -1,0 +1,40 @@
+#! /usr/bin/env bash
+
+if [[ $# -ne 1 ]]; then
+  echo "error: usage lcinit <problem number>"
+  exit 1
+fi
+
+if [[ ! $1 =~ ^[0-9]{1,4}$ ]]; then
+  echo "error: usage lcinit <problem number>"
+  exit 1
+fi
+
+NUM=$(printf "%04d" "$1")
+FILENAME="$NUM/$NUM.rb"
+
+if [[ ! -d "$NUM" ]]; then
+  mkdir -pv "$NUM"
+fi
+
+if [[ -f "$FILENAME" ]]; then
+  echo "error: file '$FILENAME' already exists"
+  exit 1
+fi
+
+cat <<STUFF > "$FILENAME"
+# frozen_string_literal: true
+
+# LINK GOES HERE
+
+require 'pry-nav'
+
+STUFF
+
+if [[ ! -f "$FILENAME" ]]; then
+  echo "error: error creating file '$FILENAME'"
+  exit 1
+else
+  echo "$FILENAME"
+  echo "success"
+fi
