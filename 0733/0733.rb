@@ -62,3 +62,28 @@ def flood_fill(image, y, x, color)
 end
 
 flood_fill([[1,1,1],[1,1,0],[1,0,1]], 1, 1, 2)
+
+
+# More concise solution
+
+def flood_fill(image, sr, sc, color)
+  q = Queue.new
+  initial = image[sr][sc]
+  image[sr][sc] = color
+  q << [sc, sr]
+  until q.empty?
+      x, y = q.pop
+      image[y][x] = color
+      [[-1, 0], [1, 0], [0, -1], [0, 1]].each do |x_offset, y_offset|
+          new_x = x + x_offset
+          new_y = y + y_offset
+          next if new_x < 0 || new_x >= image[0].length
+          next if new_y < 0 || new_y >= image.length
+          next if image[new_y][new_x] != initial
+          next if image[new_y][new_x] == color
+          image[new_y][new_x] = color
+          q << [new_x, new_y]
+      end
+  end
+  image
+end
